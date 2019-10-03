@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+        <title>Estudiante</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:messages id="messages" showDetail="true" closable="true" autoUpdate="true"/>
+            <p:menuButton value="menu">
+                <p:menuitem value="Universidad" action="#{controlE.redireccionUniversidad()}" icon="pi pi-save"/>
+            <p:separator />
+            <p:menuitem value="Diplomado" action="#{controlE.redireccionDiplomado()}" icon="pi pi-refresh"/>
+            <p:separator />
+            <p:menuitem value="Estudiante" action="#{controlE.redireccionEstudiante()}" ajax="false" icon="pi pi-times"/>
+            <p:separator />
+            </p:menuButton>
+            <br/>
+            <br/>
+            <h:outputLabel for="l1"><h1>Estudiante</h1></h:outputLabel>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l2">Nombre: </h:outputLabel>
+            <p:inputText id="nombree" value="#{controlE.pojoestudiante.nombre}" required="true" placeholder="Nombre estudiante" maxlength="15"></p:inputText>
+            <br/>
+            <br/>
+            <h:outputLabel for="l3">Cedula: </h:outputLabel>
+            <p:inputText id="cedulae" value="#{controlE.pojoestudiante.cedula}" required="true" placeholder="12345" type="number" maxlength="5"></p:inputText>
+            <br/>
+            <br/>
+            <h:outputLabel for="l4">Elija el diplomado: </h:outputLabel>
+            <p:selectOneMenu value="#{controlE.pojoestudiante.id_dip}">
+                <f:selectItems  value="#{controlD.listaDiplomados()}" var="uni" itemLabel="#{uni.nombre}" itemValue="#{uni.id}"/>
+            </p:selectOneMenu>
+            <p:separator/>
+            <button class="btn btn-success" jsf:actionListener="#{controlE.crearEstudiante()}">AGREGAR
+            </button>
+            <p:separator/>
+            
+            <p:dataTable var="est" value="#{controlE.listarEstudiante()}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{est.id}" />
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{est.nombre}" />
+                </p:column>
+
+                <p:column headerText="Cedula">
+                    <h:outputText value="#{est.cedula}"/>
+                </p:column>
+
+                <p:column headerText="Diplomado">
+                    <h:outputText value="#{est.diplomado.id}" />
+                </p:column>
+            </p:dataTable>
+            
+            
+            
+        </h:form>
+    </h:body>
+</html>
+

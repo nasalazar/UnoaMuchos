@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Universidad</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:messages id="messages" showDetail="true" closable="true" autoUpdate="true"/>
+            <p:menuButton value="menu">
+                <p:menuitem value="Universidad" action="#{controlU.redireccionUniversidad()}" icon="pi pi-save"/>
+            <p:separator />
+            <p:menuitem value="Diplomado" action="#{controlU.redireccionDiplomado()}" icon="pi pi-refresh"/>
+            <p:separator />
+            <p:menuitem value="Estudiante" action="#{controlU.redireccionEstudiante()}" ajax="false" icon="pi pi-times"/>
+            <p:separator />
+            </p:menuButton>
+            <br/>
+            <br/>
+            <h:outputLabel for="l1"><h1 align="center">Universidad</h1></h:outputLabel>
+            <br/>
+            <p:separator/>
+            <h:outputLabel for="l2">Nombre: </h:outputLabel>
+            <h:inputText id="nombreu" value="#{controlU.pojouni.nombre}"></h:inputText>
+            <br/>
+            <br/>
+            <h:outputLabel for="l3">Extension: </h:outputLabel>
+            <h:inputText id="extensionu" value="#{controlU.pojouni.extension}"></h:inputText>
+            <p:separator/>
+            <h:commandButton
+                value="AGREGAR"
+                action="#{controlU.crearUniversidad()}"
+                >
+            </h:commandButton>
+            <p:separator/>
+            <p:dataTable emptyMessage="No hay universidades aún" paginator="true" rows="3" var="univer" value="#{controlU.listaUniversidad()}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{univer.id}" />
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{univer.nombre}" />
+                </p:column>
+
+                <p:column headerText="Extension">
+                    <h:outputText value="#{univer.extension}"/>
+                </p:column>
+
+                <p:column headerText="Escudo">
+                    <img style=" width: 10%; height: 5%" src="img/escudo.png"/>
+                </p:column>
+            </p:dataTable>
+            
+            
+        </h:form>
+            
+    </h:body>
+</html>
+

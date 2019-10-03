@@ -1,0 +1,16 @@
+Controladores\AbstractFacade.class
+Controladores\DiplomadoFacadeLocal.class
+Entity\Diplomado.class
+Entity\Diplomado_.class
+Pojo\EstudianteP.class
+Entity\Universidad_.class
+Controladores\EstudianteFacadeLocal.class
+Pojo\DiplomadoP.class
+Controladores\DiplomadoFacade.class
+Pojo\UniversidadP.class
+Controladores\UniversidadFacadeLocal.class
+Controladores\UniversidadFacade.class
+Controladores\EstudianteFacade.class
+Entity\Estudiante_.class
+Entity\Universidad.class
+Entity\Estudiante.class
